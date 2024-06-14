@@ -53,7 +53,7 @@ export function Sidebar() {
           variant={pathname == "/create-session" ? "outline" : "default"}
         >
           <PlusIcon />
-          Create New Session
+          Buat sesi baru
         </Button>
       </Link>
 

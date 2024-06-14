@@ -4,10 +4,13 @@ import {
   Calculator,
   Calendar,
   CreditCard,
+  HomeIcon,
+  PlusIcon,
   Search,
   Settings,
   Smile,
   User,
+  UserIcon,
 } from "lucide-react";
 
 import {
@@ -67,23 +70,44 @@ export function SearchHistory() {
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Masukkan teks atau nama di percakapan..." />
-        <CommandList className="p-2 flex-1 text-foreground">
-          {histories.map((history, index) => (
-            <CommandItem
-              key={index}
-              className="text-foreground cursor-pointer"
-              onSelect={() => {
-                runCommand(() => router.push(`/history/${history.uuid}`));
-              }}
-            >
-              <div className="flex gap-1 px-5 flex-col">
-                <span className="text-foreground font-bold text-lg">
-                  {history.penanya}
-                </span>
-                <p className="text-xs w-fit">{history.pertanyaan}</p>
-              </div>
+        <CommandList className="p-1 flex-1 text-foreground">
+          <CommandGroup heading="Suggestions">
+            <CommandItem onSelect={() => runCommand(() => router.push("/"))}>
+              <HomeIcon size={15} className="mr-2" />
+              <span>Dashboard</span>
             </CommandItem>
-          ))}
+            <CommandItem
+              onSelect={() => runCommand(() => router.push("/profile"))}
+            >
+              <UserIcon size={15} className="mr-2" />
+              <span>Profile</span>
+            </CommandItem>
+            <CommandItem
+              onSelect={() => runCommand(() => router.push("/create-session"))}
+            >
+              <PlusIcon size={15} className="mr-2" />
+              <span>Buat sesi baru</span>
+            </CommandItem>
+          </CommandGroup>
+          <CommandSeparator />
+          <CommandGroup heading="Session history">
+            {histories.map((history, index) => (
+              <CommandItem
+                key={index}
+                className="text-foreground cursor-pointer"
+                onSelect={() => {
+                  runCommand(() => router.push(`/history/${history.uuid}`));
+                }}
+              >
+                <div className="flex gap-1 flex-col">
+                  <span className="text-foreground font-bold text-lg">
+                    {history.penanya}
+                  </span>
+                  <p className="text-xs w-fit">{history.pertanyaan}</p>
+                </div>
+              </CommandItem>
+            ))}
+          </CommandGroup>
         </CommandList>
         <CommandEmpty>
           Pencarian tidak ditemukan... <br />{" "}
