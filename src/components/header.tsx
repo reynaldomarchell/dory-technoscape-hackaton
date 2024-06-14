@@ -2,6 +2,7 @@ import { BotMessageSquare, LogOut, Search } from "lucide-react";
 import { ModeToggle } from "./theme/theme-toggle";
 import { Button } from "./ui/button";
 import { Keys } from "./utils/keys";
+import { SearchHistory } from "./search-history";
 
 export function Header() {
   return (
@@ -13,16 +14,7 @@ export function Header() {
             Hackaton 7.0
           </p>
         </div>
-        <Button
-          variant="outline"
-          className="rounded-full flex w-fit gap-3 h-[60%] text-sm text-muted-foreground"
-        >
-          <Search size={15} />
-          Cari history Anda disini...
-          <Keys>
-            <span className="text-xs">⌘</span>K
-          </Keys>
-        </Button>
+        <SearchHistory />
         <div className="items-center flex gap-2">
           <Button className="flex gap-1" variant="destructive">
             Log out <LogOut size={15} />

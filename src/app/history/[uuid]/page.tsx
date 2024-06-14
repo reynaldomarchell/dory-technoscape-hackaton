@@ -21,12 +21,35 @@ export default function ChatSection({ params }: { params: { uuid: string } }) {
             </CardDescription>
           </CardHeader>
           <CardContent className="flex gap-1">
-            <Input placeholder="Masukkan pertanyaan anda" />
+            <Input
+              value={history?.pertanyaan}
+              placeholder="Masukkan pertanyaan anda"
+            />
             <Button size="icon" className="flex-none">
               <SendIcon size={15} />
             </Button>
           </CardContent>
-          <CardFooter className="flex justify-between"></CardFooter>
+          <CardFooter className="flex justify-between">
+            <div className="bg-accent w-full rounded p-2 space-y-2">
+              <div className="text-sm text-muted-foreground">
+                Berikut adalah saran jawaban yang dapat Anda berikan:
+              </div>
+              <div className="bg-background rounded p-2">
+                <p>
+                  Terima kasih telah menghubungi kami. Untuk mengatasi masalah
+                  Anda, kami sarankan Anda melakukan hal-hal berikut:
+                </p>
+                <ul className="list-disc list-inside">
+                  <li>Periksa kembali pengaturan perangkat Anda</li>
+                  <li>Coba perbarui aplikasi ke versi terbaru</li>
+                  <li>
+                    Jika masalah masih berlanjut, silakan hubungi kami kembali
+                    dan kami akan membantu Anda
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </CardFooter>
         </Card>
         <Card className="h-fit">
           <CardHeader>
@@ -36,7 +59,10 @@ export default function ChatSection({ params }: { params: { uuid: string } }) {
             </CardDescription>
           </CardHeader>
           <CardContent className="flex gap-1">
-            <Input placeholder="Masukkan teks yang ingin anda terjemahkan" />
+            <Input
+              value={history?.pertanyaan}
+              placeholder="Masukkan teks yang ingin anda terjemahkan"
+            />
             <Select>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Bahasa" />
@@ -51,7 +77,29 @@ export default function ChatSection({ params }: { params: { uuid: string } }) {
               </Button>
             </Select>
           </CardContent>
-          <CardFooter className="flex justify-between"></CardFooter>
+          <CardFooter className="flex justify-between">
+            <div className="bg-accent w-full rounded p-2 space-y-2">
+              <div className="text-sm text-muted-foreground">
+                Berikut adalah saran jawaban yang dapat Anda berikan:
+              </div>
+              <div className="bg-background rounded p-2">
+                <div>
+                  <p>
+                    <strong>Question:</strong> How do I use this feature?
+                  </p>
+                  <p>
+                    <strong>Answer:</strong> To use this feature, you need to
+                    perform the following steps:
+                  </p>
+                  <ul className="list-disc list-inside">
+                    <li>Open the app settings</li>
+                    <li>Search for the feature you want</li>
+                    <li>Follow the instructions provided</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </CardFooter>
         </Card>
         <Card className="h-fit">
           <CardHeader>
@@ -62,12 +110,37 @@ export default function ChatSection({ params }: { params: { uuid: string } }) {
             </CardDescription>
           </CardHeader>
           <CardContent className="flex gap-1">
-            <Textarea placeholder="Masukkan percakapan anda" />
+            <Textarea
+              placeholder="Masukkan percakapan anda"
+              value={history?.pertanyaan}
+            />
             <Button size="icon" className="flex-none">
               <SendIcon size={15} />
             </Button>
           </CardContent>
-          <CardFooter className="flex justify-between"></CardFooter>
+          <CardFooter className="flex justify-between">
+            <div className="bg-accent w-full rounded p-2 space-y-2">
+              <div className="text-sm text-muted-foreground">
+                Berikut adalah saran jawaban yang dapat Anda berikan:
+              </div>
+              <div className="bg-background rounded p-2">
+                <ul className="list-disc list-inside">
+                  <li>
+                    <strong>Pelanggan:</strong> Meminta bantuan untuk
+                    menggunakan fitur tertentu
+                  </li>
+                  <li>
+                    <strong>Agen:</strong> Memberikan langkah-langkah untuk
+                    menggunakan fitur tersebut
+                  </li>
+                  <li>
+                    <strong>Pelanggan:</strong> Menyatakan terima kasih atas
+                    bantuan yang diberikan
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </CardFooter>
         </Card>
         <Card className="h-fit">
           <CardHeader>
@@ -78,12 +151,28 @@ export default function ChatSection({ params }: { params: { uuid: string } }) {
             </CardDescription>
           </CardHeader>
           <CardContent className="flex gap-1">
-            <Textarea placeholder="Masukkan percakapan anda" />
+            <Textarea
+              placeholder="Masukkan percakapan anda"
+              value={history?.pertanyaan}
+            />
             <Button size="icon" className="flex-none">
               <SendIcon size={15} />
             </Button>
           </CardContent>
-          <CardFooter className="flex justify-between"></CardFooter>
+          <CardFooter className="flex justify-between">
+            <div className="bg-accent w-full rounded p-2 space-y-2">
+              <div className="text-sm text-muted-foreground">
+                Berikut adalah saran jawaban yang dapat Anda berikan:
+              </div>
+              <div className="bg-background rounded p-2">
+                <div className="">
+                  <p className="text-3xl font-black w-full flex justify-center p-10 text-green-400">
+                    Positif 90%
+                  </p>
+                </div>
+              </div>
+            </div>
+          </CardFooter>
         </Card>
       </div>
     </div>
