@@ -3,6 +3,8 @@ import { Inter as FontSans } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import { Header } from "@/components/header";
+import { Sidebar } from "@/components/sidebar";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -29,7 +31,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Header />
+          <div className="flex w-screen max-h-[calc(100svh-3.5rem)] overflow-auto">
+            <Sidebar />
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>
