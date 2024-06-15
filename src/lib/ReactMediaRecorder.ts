@@ -66,11 +66,12 @@ export enum RecorderErrors {
 }
 
 export function useReactMediaRecorder({
-  audio = {
-    echoCancellation: true,
-    noiseSuppression: true,
-    sampleRate: 44100,
-  },
+  // audio = {
+  //   echoCancellation: true,
+  //   noiseSuppression: true,
+  //   sampleRate: 44100,
+  // },
+  audio = true,
   video = false,
   onStop = () => null,
   onStart = () => null,
