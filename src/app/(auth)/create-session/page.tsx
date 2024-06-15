@@ -1,6 +1,8 @@
 "use client";
 
-import { useReactMediaRecorder } from "react-media-recorder-2";
+import { useReactMediaRecorder } from "@/lib/ReactMediaRecorder";
+import { useEffect } from "react";
+import { start } from "repl";
 
 export default function CreateSession() {
   return (
@@ -12,21 +14,58 @@ export default function CreateSession() {
 }
 
 function Recorder() {
-  const { status, startRecording, stopRecording, mediaBlobUrl } =
-    useReactMediaRecorder({ screen: true });
+  const {
+    status: statusCaller,
+    startRecording: startRecordingCaller,
+    stopRecording: stopRecordingCaller,
+    mediaBlobUrl: mediaBlobUrlCaller,
+  } = useReactMediaRecorder({
+    screen: true,
+  });
+
+  const {
+    status: statusAgent,
+    startRecording: startRecordingAgent,
+    stopRecording: stopRecordingAgent,
+    mediaBlobUrl: mediaBlobUrlAgent,
+  } = useReactMediaRecorder({
+    audio: true,
+  });
+
+  const handleStartSession = () => {
+    startRecordingCaller();
+  };
+
+  const handleEndSession = () => {
+    stopRecordingCaller();
+    stopRecordingAgent();
+  };
+
+  useEffect(() => {
+    if (statusCaller === "recording") {
+      startRecordingAgent();
+    }
+  }, [statusCaller]);
 
   return (
     <div className="flex-col gap-2 flex">
-      <p>{status}</p>
-      <video src={mediaBlobUrl} controls autoPlay loop />
+      <p>{statusCaller}</p>
+      <p>{statusAgent}</p>
+      <div className="flex items-center gap-4 max-w-screen-xl">
+        <video src={mediaBlobUrlCaller} controls autoPlay loop />
+        <video src={mediaBlobUrlAgent} controls autoPlay loop />
+      </div>
       <div className="flex items-center gap-4">
         <button
-          onClick={startRecording}
+          onClick={handleStartSession}
           className="px-2 py-1 border rounded-md"
         >
           Start Recording
         </button>
-        <button onClick={stopRecording} className="px-2 py-1 border rounded-md">
+        <button
+          onClick={handleEndSession}
+          className="px-2 py-1 border rounded-md"
+        >
           Stop Recording
         </button>
       </div>
