@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+
 import {
   CalendarCheck,
   CalendarClock,
@@ -215,7 +216,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">90% Positif</div>
-                  <p className="text-xs text-green-400 text-muted-foreground">
+                  <p className="text-xs text-green-400">
                     +15.1% dari bulan lalu
                   </p>
                 </CardContent>
@@ -229,7 +230,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">10 Jadwal Selesai</div>
-                  <p className="text-xs text-green-400 text-muted-foreground">
+                  <p className="text-xs text-green-400">
                     +50,8% dari bulan lalu
                   </p>
                 </CardContent>
