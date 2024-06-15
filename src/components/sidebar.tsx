@@ -11,8 +11,6 @@ import { cn } from "@/lib/utils";
 export function Sidebar() {
   const pathname = usePathname();
 
-  console.log(pathname);
-
   return (
     <aside className="flex-col gap-1 p-5 border-r w-[270px] h-[calc(100svh-3.5rem)] flex sticky top-0">
       <Link href="/">
