@@ -1,4 +1,20 @@
 import { histories } from "@/dummy/db";
+import * as React from "react";
+
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+import { SendIcon } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import QuestionAnswer from "@/components/question-answer";
+import TranslateLanguage from "@/components/translate-language";
 
 export default function ChatSection({ params }: { params: { uuid: string } }) {
   const history = histories.find((history) => history.uuid === params.uuid);
@@ -9,12 +25,19 @@ export default function ChatSection({ params }: { params: { uuid: string } }) {
         {history?.penanya}
       </h1>
       <h4 className="scroll-m-20 text-xl font-semibold text-muted-foreground tracking-tight">
-        {history?.pertanyaan}
+        {new Date(history?.date ?? "").toLocaleString("id-ID", {
+          weekday: "long",
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          timeZone: "Asia/Jakarta",
+        })}
       </h4>
 
-      <div className="grid mt-5 w-full gap-4 grid-cols-1 md:grid-cols-2">
-        <QuestionAnswer params={params} />
-        <TranslateLanguage params={params} />
+      <QuestionAnswer params={params} />
+      {/* <TranslateLanguage params={params} />
         <Card className="h-fit">
           <CardHeader>
             <CardTitle>Peringkas Percakapan</CardTitle>
@@ -87,33 +110,7 @@ export default function ChatSection({ params }: { params: { uuid: string } }) {
               </div>
             </div>
           </CardFooter>
-        </Card>
-      </div>
+        </Card> */}
     </div>
   );
 }
-
-import * as React from "react";
-
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { SendIcon } from "lucide-react";
-import { Textarea } from "@/components/ui/textarea";
-import QuestionAnswer from "@/components/question-answer";
-import TranslateLanguage from "@/components/translate-language";

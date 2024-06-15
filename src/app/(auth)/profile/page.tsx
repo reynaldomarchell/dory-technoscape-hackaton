@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 export default function Profile() {
   return (
-    <div className="w-full max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div className="w-full grow max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <div className="flex gap-8 w-full">
         <div className="flex flex-col items-center">
           <Avatar className="w-24 h-24 mb-4">

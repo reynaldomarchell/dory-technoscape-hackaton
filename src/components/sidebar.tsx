@@ -70,17 +70,25 @@ function CardChatHistory({
   pathname: string;
 }) {
   return (
-    <Link href={`/history/${history.uuid}`}>
+    <Link href={`/history/${history.uuid}`} className="w-full">
       <div
         className={cn(
-          "flex gap-2 hover:bg-accent rounded-lg p-4",
+          "flex gap-2 hover:bg-accent rounded-lg p-4 w-full",
           pathname == `/history/${history.uuid}` && "bg-accent"
         )}
       >
         <div className="flex flex-col  w-full">
           <p className="font-bold">{history.penanya}</p>
           <p className="truncate text-xs text-muted-foreground">
-            {history.pertanyaan}
+            {new Date(history.date).toLocaleString("id-ID", {
+              weekday: "long",
+              day: "2-digit",
+              month: "long",
+              year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+              timeZone: "Asia/Jakarta",
+            })}
           </p>
         </div>
       </div>
