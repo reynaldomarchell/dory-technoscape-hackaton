@@ -13,94 +13,8 @@ export default function ChatSection({ params }: { params: { uuid: string } }) {
       </h4>
 
       <div className="grid mt-5 w-full gap-4 grid-cols-1 md:grid-cols-2">
-        <Card className="h-fit">
-          <CardHeader>
-            <CardTitle>Tanya Saran Jawaban</CardTitle>
-            <CardDescription>
-              Tanya saran jawaban dari pertanyaan yang anda berikan.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="flex gap-1">
-            <Input
-              value={history?.pertanyaan}
-              placeholder="Masukkan pertanyaan anda"
-            />
-            <Button size="icon" className="flex-none">
-              <SendIcon size={15} />
-            </Button>
-          </CardContent>
-          <CardFooter className="flex justify-between">
-            <div className="bg-accent w-full rounded p-2 space-y-2">
-              <div className="text-sm text-muted-foreground">
-                Berikut adalah saran jawaban yang dapat Anda berikan:
-              </div>
-              <div className="bg-background rounded p-2">
-                <p>
-                  Terima kasih telah menghubungi kami. Untuk mengatasi masalah
-                  Anda, kami sarankan Anda melakukan hal-hal berikut:
-                </p>
-                <ul className="list-disc list-inside">
-                  <li>Periksa kembali pengaturan perangkat Anda</li>
-                  <li>Coba perbarui aplikasi ke versi terbaru</li>
-                  <li>
-                    Jika masalah masih berlanjut, silakan hubungi kami kembali
-                    dan kami akan membantu Anda
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </CardFooter>
-        </Card>
-        <Card className="h-fit">
-          <CardHeader>
-            <CardTitle>Terjemahkan dalam bahasa lain</CardTitle>
-            <CardDescription>
-              Terjemahkan pertanyaan anda dalam bahasa lain.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="flex gap-1">
-            <Input
-              value={history?.pertanyaan}
-              placeholder="Masukkan teks yang ingin anda terjemahkan"
-            />
-            <Select>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Bahasa" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="ingriss">Inggris</SelectItem>
-                <SelectItem value="prancis">Prancis</SelectItem>
-                <SelectItem value="jepang">Jepang</SelectItem>
-              </SelectContent>
-              <Button size="icon" className="flex-none">
-                <SendIcon size={15} />
-              </Button>
-            </Select>
-          </CardContent>
-          <CardFooter className="flex justify-between">
-            <div className="bg-accent w-full rounded p-2 space-y-2">
-              <div className="text-sm text-muted-foreground">
-                Berikut adalah saran jawaban yang dapat Anda berikan:
-              </div>
-              <div className="bg-background rounded p-2">
-                <div>
-                  <p>
-                    <strong>Question:</strong> How do I use this feature?
-                  </p>
-                  <p>
-                    <strong>Answer:</strong> To use this feature, you need to
-                    perform the following steps:
-                  </p>
-                  <ul className="list-disc list-inside">
-                    <li>Open the app settings</li>
-                    <li>Search for the feature you want</li>
-                    <li>Follow the instructions provided</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </CardFooter>
-        </Card>
+        <QuestionAnswer params={params} />
+        <TranslateLanguage params={params} />
         <Card className="h-fit">
           <CardHeader>
             <CardTitle>Peringkas Percakapan</CardTitle>
@@ -201,3 +115,5 @@ import {
 } from "@/components/ui/select";
 import { SendIcon } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
+import QuestionAnswer from "@/components/question-answer";
+import TranslateLanguage from "@/components/translate-language";
